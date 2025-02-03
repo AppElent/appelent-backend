@@ -1,7 +1,7 @@
 import * as Cheerio from "cheerio";
 
 export default class ScrapingService {
-  private $: Cheerio.CheerioAPI;
+  public $: Cheerio.CheerioAPI;
 
   constructor(html: string) {
     this.$ = Cheerio.load(html);
