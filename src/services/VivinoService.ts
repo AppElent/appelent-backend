@@ -138,29 +138,6 @@ export default class VivinoService {
       ).json();
       const tasteResult = this.getTasteData(tasteData?.tastes?.structure);
 
-      // Get script with data-component-name WinePageTopSection
-
-      // $(
-      //   'script[data-component-name="WinePageTopSection"]'
-      // ).html();
-      //return JSON.parse(datatest as string);
-      //console.log(tasteData);
-
-      // const taste = $(
-      //   ".tasteCharacteristics__tasteCharacteristics--2y2ix"
-      // ).html();
-      // console.log(taste);
-      //   let wine;
-      //   if (Array.isArray(jsonData)) {
-      //     wine = jsonData[0];
-      //   } else {
-      //     wine = jsonData["@graph"]?.find((gr) => gr["@type"] === "Wine");
-      //   }
-
-      //   if (!wine) {
-      //     throw new Error("Wine data not found in JSON-LD");
-      //   }
-
       return {
         id: rawJson?.pageInformation?.wine?.id,
         name: jsonld?.name,
