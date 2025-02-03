@@ -2,13 +2,14 @@
   "dependencies": {
     "cheerio": "^1.0.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
     "express": "^4.21.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.12.0",
+    "dotenv": "^16.4.7",
+    "dotenv-cli": "^8.0.0",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
@@ -16,6 +17,11 @@
   "scripts": {
     "dev": "nodemon --exec ts-node src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "docker:build": "docker build -t ghcr.io/appelent/appelent-backend:latest .",
+    "docker:run": "docker run -p 3000:3000 ghcr.io/appelent/appelent-backend:latest",
+    "docker:push": "docker push ghcr.io/appelent/appelent-backend:latest",
+    "deploy:render": "dotenv -e .env -- powershell -Command \"Invoke-WebRequest -Uri $env:RENDER_DEPLOY_HOOK -Method Post\"",
+    "deploy": "npm run docker:build && npm run docker:push && npm run deploy:render"
   }
 }
